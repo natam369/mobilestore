@@ -1,6 +1,6 @@
 node {
 stage('Git-Checkout') {
-   git 'https://github.com/amitvashisttech/mindtree-devops-30Jan2020.git'
+   git 'https://github.com/natam369/mobilestore.git'
   }
     stage('Maven-Clean') {
    sh label: '', script: 'mvn clean'
