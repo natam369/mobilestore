@@ -1,6 +1,6 @@
 ---
 
-- hosts: 'web'
+- hosts: 'all'
   become: yes
   tasks:
   - name: Install Apache2 Packages 
@@ -22,13 +22,8 @@
   - name: Extract Tomcat
     command: "tar zxf /opt/SP/apps/tomcat.tar.gz  -C /opt/SP/apps/tomcat --strip-components 1"
 
-  - name: Copy Index Page Files
-    copy: src=templates/apps dest=/opt/SP/apps/tomcat/webapps/ mode=0644
-    notify: 
-    - Restart Tomcat
-    
   - name: Copy Petclinic Project War Files
-    copy: src=../target/ dest=/opt/SP/apps/tomcat/webapps/ mode=0644
+    copy: src=../target/mobliestore-0.0.1-SNAPSHOT.jar dest=/opt/SP/apps/tomcat/webapps/ mode=0644
 
   handlers:
   - name: Restart Tomcat
